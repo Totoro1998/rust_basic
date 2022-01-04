@@ -1,1 +1,2 @@
-rust语法基础
+# rust_basic
+Rust基础语法学习
