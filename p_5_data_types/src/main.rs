@@ -1,13 +1,13 @@
 use std::io;
 
-// 整型
+// // 整型
 // fn main() {
 //     let value_i8: u8 = 8; // 无符号
 //     let value_u8: i8 = -8; // 有符号
 //     println!("{value_i8},{value_u8}")
 // }
 
-// 浮点型
+// // 浮点型
 // fn main() {
 //     let value_f64 = 2.0; // 默认为f64
 
@@ -16,7 +16,7 @@ use std::io;
 //     println!("{value_f64},{value_f32}")
 // }
 
-//数值运算
+// //数值运算
 // fn main() {
 //     // addition
 //     let sum = 5 + 10;
@@ -39,7 +39,7 @@ use std::io;
 //     )
 // }
 
-// 布尔类型
+// // 布尔类型
 // fn main() {
 //     let value_t = true;
 //     let value_f: bool = false; // with explicit type annotation
@@ -47,7 +47,7 @@ use std::io;
 //     println!("{value_t},{value_f}")
 // }
 
-// 字符类型
+// // 字符类型
 // fn main() {
 //     let c = 'z';
 //     let z: char = 'ℤ'; // with explicit type annotation
@@ -56,7 +56,7 @@ use std::io;
 //     println!("{c},{z},{heart_eyed_cat}")
 // }
 
-//元祖类型
+// // 元祖类型
 // fn main() {
 //     let tup = (500, 6.4, 1);
 
@@ -67,7 +67,7 @@ use std::io;
 //     println!("x={},y={},z={},first_value={}", x, y, z, first_value);
 // }
 
-// 数组类型
+// // 数组类型
 // fn main() {
 //     let a = [1, 2, 3, 4, 5];
 
@@ -76,24 +76,24 @@ use std::io;
 //     println!("first={},second={}", first, second);
 // }
 
-// 无效的数组元素访问
-fn main() {
-    let a = [1, 2, 3, 4, 5];
+// // 无效的数组元素访问
+// fn main() {
+//     let a = [1, 2, 3, 4, 5];
 
-    println!("Please enter an array index.");
+//     println!("Please enter an array index.");
 
-    let mut index = String::new();
+//     let mut index = String::new();
 
-    io::stdin()
-        .read_line(&mut index)
-        .expect("Failed to read line");
+//     io::stdin()
+//         .read_line(&mut index)
+//         .expect("Failed to read line");
 
-    let index: usize = index
-        .trim()
-        .parse()
-        .expect("Index entered was not a number");
+//     let index: usize = index
+//         .trim()
+//         .parse()
+//         .expect("Index entered was not a number");
 
-    let element = a[index];
+//     let element = a[index];
 
-    println!("The value of the element at index {index} is: {element}");
-}
+//     println!("The value of the element at index {index} is: {element}");
+// }
