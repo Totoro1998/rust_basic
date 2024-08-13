@@ -3,5 +3,5 @@
 version = 3
 
 [[package]]
-name = "variables"
+name = "p_4_variables"
 version = "0.1.0"
