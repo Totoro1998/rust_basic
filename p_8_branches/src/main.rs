@@ -41,18 +41,18 @@
 // }
 
 // 在 let 语句中使用 if
-// fn main() {
-//     let condition = true;
-//     let number = if condition { 5 } else { 6 };
-
-//     println!("The value of number is: {number}");
-// }
-
-//if 的每个分支的可能的返回值都必须是相同类型
 fn main() {
     let condition = true;
-
-    let number = if condition { 5 } else { "six" };
+    let number = if condition { 5 } else { 6 };
 
     println!("The value of number is: {number}");
 }
+
+// //if 的每个分支的可能的返回值都必须是相同类型
+// fn main() {
+//     let condition = true;
+
+//     let number = if condition { 5 } else { "six" };
+
+//     println!("The value of number is: {number}");
+// }
