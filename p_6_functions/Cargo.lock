@@ -3,5 +3,5 @@
 version = 3
 
 [[package]]
-name = "functions"
+name = "p_6_functions"
 version = "0.1.0"

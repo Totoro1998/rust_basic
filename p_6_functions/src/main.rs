@@ -1,7 +1,6 @@
 fn main() {
     println!("Hello, world!");
-    // another_function();
-    another_function(5);
+    another_function();
     print_labeled_measurement(5, 'h');
     expressions();
     let x = five();
@@ -13,18 +12,13 @@ fn main() {
 }
 
 // 定义函数
-// fn another_function() {
-//     println!("Another function.");
-// }
-
-// 传递参数
-fn another_function(x: i32) {
-    println!("The value of x is: {x}");
+fn another_function() {
+    println!("Another function.");
 }
 
-// 多个参数
+// 传递参数
 fn print_labeled_measurement(value: i32, unit_label: char) {
-    println!("The measurement is: {value}{unit_label}");
+    println!("The measurement is: {value} {unit_label}");
 }
 
 // 表达式
@@ -33,7 +27,6 @@ fn expressions() {
         let x = 3;
         x + 1
     };
-
     println!("The value of y is: {y}");
 }
 
@@ -41,7 +34,7 @@ fn expressions() {
 fn five() -> i32 {
     5
 }
-
+// 表达式与语句的区别，表达式返回值，不能加分号。
 fn plus_one(x: i32) -> i32 {
     x + 1
 }
