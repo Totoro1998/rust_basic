@@ -4,7 +4,7 @@
 //     }
 // }
 
-// 从循环中返回值
+// // 从循环中返回值
 // fn main() {
 //     let mut counter = 0;
 
@@ -18,6 +18,7 @@
 
 //     println!("The result is {result}");
 // }
+// // The result is 20
 
 // 循环标签：在多个循环之间消除歧义
 // fn main() {
@@ -63,9 +64,9 @@
 //     }
 // }
 
-fn main() {
-    for number in (1..4).rev() {
-        println!("{number}!");
-    }
-    println!("LIFTOFF!!!");
-}
+// fn main() {
+//     for number in (1..4).rev() {
+//         println!("{number}!");
+//     }
+//     println!("LIFTOFF!!!");
+// }
