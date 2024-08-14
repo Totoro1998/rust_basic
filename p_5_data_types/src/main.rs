@@ -76,24 +76,24 @@ use std::io;
 //     println!("first={},second={}", first, second);
 // }
 
-// // 无效的数组元素访问
-// fn main() {
-//     let a = [1, 2, 3, 4, 5];
+// 无效的数组元素访问
+fn main() {
+    let a = [1, 2, 3, 4, 5];
 
-//     println!("Please enter an array index.");
+    println!("Please enter an array index.");
 
-//     let mut index = String::new();
+    let mut index = String::new();
 
-//     io::stdin()
-//         .read_line(&mut index)
-//         .expect("Failed to read line");
+    io::stdin()
+        .read_line(&mut index)
+        .expect("Failed to read line");
 
-//     let index: usize = index
-//         .trim()
-//         .parse()
-//         .expect("Index entered was not a number");
+    let index: usize = index
+        .trim()
+        .parse()
+        .expect("Index entered was not a number");
 
-//     let element = a[index];
+    let element = a[index];
 
-//     println!("The value of the element at index {index} is: {element}");
-// }
+    println!("The value of the element at index {index} is: {element}");
+}
