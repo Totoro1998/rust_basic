@@ -134,26 +134,26 @@
 //     }
 // }
 
-// fn main() {
-//     #[derive(Debug)]
-//     enum UsState {
-//         Alabama,
-//         Alaska,
-//     }
-//     #[derive(Debug)]
-//     enum Coin {
-//         Penny,
-//         Nickel,
-//         Dime,
-//         Quarter(UsState),
-//     }
+fn main() {
+    #[derive(Debug)]
+    enum UsState {
+        Alabama,
+        Alaska,
+    }
+    #[derive(Debug)]
+    enum Coin {
+        Penny,
+        Nickel,
+        Dime,
+        Quarter(UsState),
+    }
 
-//     let mut count = 1;
-//     let coin = Coin::Penny;
-//     if let Coin::Quarter(state) = coin {
-//         println!("State quarter from {state:?}!");
-//     } else {
-//         count += 1;
-//     }
-//     println!("count---{count}")
-// }
+    let mut count = 1;
+    let coin = Coin::Penny;
+    if let Coin::Quarter(state) = coin {
+        println!("State quarter from {state:?}!");
+    } else {
+        count += 1;
+    }
+    println!("count---{count}")
+}
