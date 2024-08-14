@@ -86,19 +86,19 @@ struct Rectangle {
 //     dbg!(&sq);
 // }
 
-// // 可变的self
-// fn main() {
-//     let mut rect = Rectangle {
-//         width: 100,
-//         height: 100,
-//     };
-//     rect.change_size(20);
-//     dbg!(rect);
-// }
+// 可变的self
+fn main() {
+    let mut rect = Rectangle {
+        width: 100,
+        height: 100,
+    };
+    rect.change_size(20);
+    dbg!(rect);
+}
 
-// impl Rectangle {
-//     fn change_size(&mut self, size: u32) {
-//         self.width = size;
-//         self.height = size;
-//     }
-// }
+impl Rectangle {
+    fn change_size(&mut self, size: u32) {
+        self.width = size;
+        self.height = size;
+    }
+}

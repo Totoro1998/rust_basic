@@ -143,8 +143,8 @@ struct User {
 //     println!("black[0]---{},origin[0]---{}", black.0, origin.0)
 // }
 
-// struct AlwaysEqual;
-// // 类单元结构体
-// fn main() {
-//     let subject = AlwaysEqual;
-// }
+struct AlwaysEqual;
+// 类单元结构体
+fn main() {
+    let subject = AlwaysEqual;
+}
