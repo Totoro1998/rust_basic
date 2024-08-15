@@ -85,6 +85,7 @@
 //     // meal.seasonal_fruit = String::from("blueberries");
 // }
 
+// 如果我们将枚举设为公有，则它的所有成员都将变为公有。
 mod back_of_house {
     pub enum Appetizer {
         Soup,
