@@ -1,0 +1,7 @@
+[package]
+name = "p_17_crates"
+version = "0.1.0"
+edition = "2021"
+default-run = "p_17_crates"
+
+[dependencies]
