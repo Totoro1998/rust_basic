@@ -1,0 +1,6 @@
+[package]
+name = "p_32_minigrep"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
