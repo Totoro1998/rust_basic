@@ -1,0 +1,6 @@
+[package]
+name = "p_43_reference-cycles"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
