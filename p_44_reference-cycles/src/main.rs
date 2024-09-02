@@ -1,3 +1,4 @@
+// 创建一个某项知道其子项和父项的树形结构
 use std::cell::RefCell;
 use std::rc::{Rc, Weak};
 
@@ -18,6 +19,7 @@ use std::rc::{Rc, Weak};
 //     });
 // }
 
+// 增加从子到父的引用
 #[derive(Debug)]
 struct Node {
     value: i32,
