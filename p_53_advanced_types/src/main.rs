@@ -12,3 +12,5 @@
 // fn bar() -> ! {}
 
 // 动态大小类型和 Sized trait
+
+fn main() {}
