@@ -1,4 +1,4 @@
-use std::io;
+// use std::io;
 
 // // 整型
 // fn main() {
@@ -76,24 +76,54 @@ use std::io;
 //     println!("first={},second={}", first, second);
 // }
 
-// 无效的数组元素访问
+// // 无效的数组元素访问
+// fn main() {
+//     let a = [1, 2, 3, 4, 5];
+
+//     println!("Please enter an array index.");
+
+//     let mut index = String::new();
+
+//     io::stdin()
+//         .read_line(&mut index)
+//         .expect("Failed to read line");
+
+//     let index: usize = index
+//         .trim()
+//         .parse()
+//         .expect("Index entered was not a number");
+
+//     let element = a[index];
+
+//     println!("The value of the element at index {index} is: {element}");
+// }
+
+// // 字符串字面量
+// fn main() {
+//     // let speech = "\"Ouch!\" said the well.\n"; // "Ouch!" said the well.
+//     //     let speech = "In the room the women come and go,
+//     //  Singing of Mount Abora";
+//     //     let speech = "It was a bright, cold day in April, and \
+//     //  there were four of us—\
+//     //  more or less.";
+
+//     // let speech = r"C:\Program Files\Gorillas";
+//     // let speech = r"这是一个原始字符串，包含反斜杠：\ 和引号：\";
+//     // let speech = r#"""""这是一""""个原始字符串，包含反斜杠：\ 和引号：\""""""#;
+//     // let speech = r##"""""这是一""""#个原始字符串，包含反斜杠：\ 和引号：\""""""##;
+//     let speech = r###"""""这是一""""##个原始字符串，包含反斜杠：\ 和引号：\""""""###;
+//     println!("{speech}");
+// }
+
+// // 字节串
+// fn main() {
+//     let method = b"GET";
+//     assert_eq!(method, &[b'G', b'E', b'T']); // true
+// }
+
 fn main() {
-    let a = [1, 2, 3, 4, 5];
-
-    println!("Please enter an array index.");
-
-    let mut index = String::new();
-
-    io::stdin()
-        .read_line(&mut index)
-        .expect("Failed to read line");
-
-    let index: usize = index
-        .trim()
-        .parse()
-        .expect("Index entered was not a number");
-
-    let element = a[index];
-
-    println!("The value of the element at index {index} is: {element}");
+    let noodles = "noodles".to_string();
+    let oodles = &noodles[1..];
+    let poodles = "ಠ_ಠ";
+    println!("{}", noodles.len()) // 7
 }
