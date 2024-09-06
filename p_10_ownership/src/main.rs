@@ -88,19 +88,96 @@
 //     a_string // 返回 a_string 并移出给调用的函数
 // }
 
-// 如果我们想要函数使用一个值但不获取所有权该怎么办呢？
-// 如果我们还要接着使用它的话，每次都传进去再返回来就有点烦人了，除此之外，我们也可能想返回函数体中产生的一些数据。
-// 我们可以使用元组来返回多个值
+// // 如果我们想要函数使用一个值但不获取所有权该怎么办呢？
+// // 如果我们还要接着使用它的话，每次都传进去再返回来就有点烦人了，除此之外，我们也可能想返回函数体中产生的一些数据。
+// // 我们可以使用元组来返回多个值
+// fn main() {
+//     let s1 = String::from("hello");
+
+//     let (s2, len) = calculate_length(s1);
+
+//     println!("The length of '{}' is {}.", s2, len);
+// }
+
+// fn calculate_length(s: String) -> (String, usize) {
+//     let length = s.len(); // len() 返回字符串的长度
+
+//     (s, length)
+// }
+
+// // 移动与索引内容
+// fn main() {
+//     let mut v = Vec::new();
+//     // 构建一个由字符串"101"、"102"……"105"组成的向量
+//     for i in 101..106 {
+//         v.push(i.to_string());
+//     }
+//     // 从向量中随机抽取元素
+//     let third: String = v[2];
+//     // let third = &v[2];
+//     // let third: &String = &v[2].clone();
+// }
+
+// // 将一个元素移出向量
+// fn main() {
+//     // 构建一个由字符串"101"、"102"……"105"组成的向量
+//     let mut v = Vec::new();
+//     for i in 101..106 {
+//         v.push(i.to_string());
+//     }
+//     // 方法一：从向量的末尾弹出一个值：
+//     let fifth = v.pop().expect("vector empty!");
+//     assert_eq!(fifth, "105");
+//     // 方法二：将向量中指定索引处的值与最后一个值互换，并把前者移动出来：
+//     let second = v.swap_remove(1);
+//     assert_eq!(second, "102");
+//     // 方法三：把要取出的值和另一个值互换：
+//     let third = std::mem::replace(&mut v[2], "substitute".to_string());
+//     assert_eq!(third, "103");
+//     // 看看向量中还剩下什么
+//     assert_eq!(v, vec!["101", "104", "substitute"]);
+// }
+
+// fn main() {
+//     let v = vec![
+//         "liberté".to_string(),
+//         "égalité".to_string(),
+//         "fraternité".to_string(),
+//     ];
+//     for mut s in v {
+//         print!("{:?}", v); // borrow of moved value: `v`
+//         s.push('!');
+//         println!("{}", s);
+//     }
+//     print!("{:?}", v); // borrow of moved value: `v`
+// // }
+// fn main() {
+//     let mut v = vec![
+//         "liberté".to_string(),
+//         "égalité".to_string(),
+//         "fraternité".to_string(),
+//     ];
+//     for mut s in &mut v {
+//         s.push('!');
+//         println!("{}", s);
+//     }
+//     print!("{:?}", v)
+// }
+
+// 移动与索引内容
 fn main() {
-    let s1 = String::from("hello");
+    struct Person {
+        name: Option<String>,
+    }
+    let mut composers = Vec::new();
+    composers.push(Person {
+        name: Some("Palestrina".to_string()),
+    });
 
-    let (s2, len) = calculate_length(s1);
+    // let first_name = composers[0].name;
 
-    println!("The length of '{}' is {}.", s2, len);
-}
-
-fn calculate_length(s: String) -> (String, usize) {
-    let length = s.len(); // len() 返回字符串的长度
-
-    (s, length)
+    let first_name = std::mem::replace(&mut composers[0].name, None);
+    // let first_name = composers[0].name.take();
+    assert_eq!(first_name, Some("Palestrina".to_string()));
+    assert_eq!(composers[0].name, None);
 }
