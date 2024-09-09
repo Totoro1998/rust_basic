@@ -164,20 +164,40 @@
 //     print!("{:?}", v)
 // }
 
-// 移动与索引内容
+// // 移动与索引内容
+// fn main() {
+//     struct Person {
+//         name: Option<String>,
+//     }
+//     let mut composers = Vec::new();
+//     composers.push(Person {
+//         name: Some("Palestrina".to_string()),
+//     });
+
+//     // let first_name = composers[0].name;
+
+//     let first_name = std::mem::replace(&mut composers[0].name, None);
+//     // let first_name = composers[0].name.take();
+//     assert_eq!(first_name, Some("Palestrina".to_string()));
+//     assert_eq!(composers[0].name, None);
+// }
+
+// 默认情况下，struct 类型和 enum 类型不是Copy 类型
 fn main() {
-    struct Person {
-        name: Option<String>,
+    #[derive(Copy, Clone)] // 如果用户自定义的的所有字段本身都是 Copy 类型，那么也可以通过将属性 #[derive(Copy, Clone)] 放置在此定义之上来创建 Copy 类型
+    struct Label {
+        number: u32,
     }
-    let mut composers = Vec::new();
-    composers.push(Person {
-        name: Some("Palestrina".to_string()),
-    });
+    // 如果试图在一个其字段不全是 Copy 类型的结构体上这样做，则仍然行不通
+    // #[derive(Copy, Clone)]
+    // struct StringLabel {
+    //     name: String,
+    // }
 
-    // let first_name = composers[0].name;
-
-    let first_name = std::mem::replace(&mut composers[0].name, None);
-    // let first_name = composers[0].name.take();
-    assert_eq!(first_name, Some("Palestrina".to_string()));
-    assert_eq!(composers[0].name, None);
+    fn print(l: Label) {
+        println!("STAMP: {}", l.number);
+    }
+    let l = Label { number: 3 };
+    print(l);
+    println!("My label number is: {}", l.number); // value borrowed here after move
 }
