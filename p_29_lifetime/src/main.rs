@@ -140,32 +140,77 @@
 //     )
 // }
 
+// // 生命周期的结构体嵌套
+// fn main() {
+//     struct Inner<'a> {
+//         value: &'a str,
+//     }
+//     struct Outer<'a> {
+//         inner: Inner<'a>,
+//     }
+
+//     let text = String::from("hello");
+
+//     // 创建 Inner 结构体，引用 text
+//     let inner_instance = Inner { value: &text };
+
+//     // 创建 Outer 结构体，包含 inner_instance
+//     let outer_instance = Outer {
+//         inner: inner_instance,
+//     };
+
+//     println!("Inner value: {}", outer_instance.inner.value);
+// }
+
+// 不同的生命周期参数
+fn main() {
+    // struct S<'a> {
+    //     x: &'a i32,
+    //     y: &'a i32,
+    // }
+    struct S<'a, 'b> {
+        x: &'a i32,
+        y: &'b i32,
+    }
+
+    let x = 10;
+    let r;
+    {
+        let y = 20;
+        {
+            let s = S { x: &x, y: &y }; // borrowed value does not live long enough
+            r = s.x;
+        }
+    }
+    println!("{}", r);
+}
+
 // // 静态生命周期其生命周期能够存活于整个程序期间。
 // let s: &'static str = "I have a static lifetime.";
 
-// 结合泛型类型参数、trait bounds 和生命周期
-use std::fmt::Display;
+// // 结合泛型类型参数、trait bounds 和生命周期
+// use std::fmt::Display;
 
-// 因为生命周期也是泛型，所以生命周期参数 'a 和泛型类型参数 T 都位于函数名后的同一尖括号列表中。
-fn longest_with_an_announcement<'a, T>(x: &'a str, y: &'a str, ann: T) -> &'a str
-where
-    T: Display,
-{
-    println!("Announcement! {ann}");
-    if x.len() > y.len() {
-        x
-    } else {
-        y
-    }
-}
+// // 因为生命周期也是泛型，所以生命周期参数 'a 和泛型类型参数 T 都位于函数名后的同一尖括号列表中。
+// fn longest_with_an_announcement<'a, T>(x: &'a str, y: &'a str, ann: T) -> &'a str
+// where
+//     T: Display,
+// {
+//     println!("Announcement! {ann}");
+//     if x.len() > y.len() {
+//         x
+//     } else {
+//         y
+//     }
+// }
 
-fn main() {
-    let string1 = "Hello, Rust!";
-    let string2 = "Hi!";
+// fn main() {
+//     let string1 = "Hello, Rust!";
+//     let string2 = "Hi!";
 
-    let announcement = "Comparing two strings"; // announcement是字符串slice类型，也实现了Display
+//     let announcement = "Comparing two strings"; // announcement是字符串slice类型，也实现了Display
 
-    let result = longest_with_an_announcement(string1, string2, announcement);
+//     let result = longest_with_an_announcement(string1, string2, announcement);
 
-    println!("The longest string is: {}", result);
-}
+//     println!("The longest string is: {}", result);
+// }
