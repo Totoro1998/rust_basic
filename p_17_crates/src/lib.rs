@@ -1,3 +1,3 @@
-fn say_hello(message: &str) {
+pub fn say_hello(message: &str) {
     println!("hello {}", message)
 }
