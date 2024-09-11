@@ -143,8 +143,56 @@ struct User {
 //     println!("black[0]---{},origin[0]---{}", black.0, origin.0)
 // }
 
-struct AlwaysEqual;
-// 类单元结构体
+// struct AlwaysEqual;
+// // 类单元结构体
+// fn main() {
+//     let subject = AlwaysEqual;
+// }
+
+// 获取self的所有权
 fn main() {
-    let subject = AlwaysEqual;
+    pub struct Queue {
+        older: Vec<char>,   // 较旧的元素，最早进来的在后面
+        younger: Vec<char>, // 较新的元素，最后进来的在后面
+    }
+    impl Queue {
+        /// 把字符推入队列的最后
+        pub fn push(&mut self, c: char) {
+            self.younger.push(c);
+        }
+        /// 从队列的前面弹出一个字符。如果确实有要弹出的字符，
+        /// 就返回`Some(c)`；如果队列为空，则返回`None`
+        pub fn pop(&mut self) -> Option<char> {
+            if self.older.is_empty() {
+                if self.younger.is_empty() {
+                    return None;
+                }
+                // 将younger中的元素移到older中，并按照所承诺的顺序排列它们
+                use std::mem::swap;
+                swap(&mut self.older, &mut self.younger);
+                self.older.reverse();
+            }
+            // 现在older能保证有值了。Vec的pop方法已经
+            // 返回一个Option，所以可以放心使用了
+            self.older.pop()
+        }
+    }
+    impl Queue {
+        pub fn split(self) -> (Vec<char>, Vec<char>) {
+            (self.older, self.younger)
+        }
+    }
+
+    let mut q = Queue {
+        older: Vec::new(),
+        younger: Vec::new(),
+    };
+    q.push('P');
+    q.push('D');
+    assert_eq!(q.pop(), Some('P'));
+    q.push('X');
+    let (older, younger) = q.split();
+    // q现在是未初始化状态
+    assert_eq!(older, vec!['D']);
+    assert_eq!(younger, vec!['X']);
 }
